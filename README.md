@@ -214,7 +214,7 @@ services:
           - inference
         ipv4_address: 172.22.0.4
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/inference/SOL"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/inference/BTC"]
       interval: 10s
       timeout: 10s
       retries: 12
@@ -295,11 +295,11 @@ services:
           --runtime-path=/app/runtime --runtime-cli=bls-runtime --workspace=/data/workspace \
           --private-key=/data/keys/priv.bin --log-level=debug --port=9011 \
           --boot-nodes=/ip4/172.22.0.100/tcp/9010/p2p/HEAD-ID \
-          --topic=allora-topic-5-worker --allora-chain-worker-mode=worker \
+          --topic=allora-topic-3-worker --allora-chain-worker-mode=worker \
           --allora-chain-restore-mnemonic='WALLETSEEDPHRASE' \
           --allora-node-rpc-address=https://allora-rpc.testnet-1.testnet.allora.network \
           --allora-chain-key-name=worker-1 \
-          --allora-chain-topic-id=5
+          --allora-chain-topic-id=3
     volumes:
       - ./workers/worker-1:/data
     working_dir: /data
@@ -335,11 +335,11 @@ services:
           --runtime-path=/app/runtime --runtime-cli=bls-runtime --workspace=/data/workspace \
           --private-key=/data/keys/priv.bin --log-level=debug --port=9013 \
           --boot-nodes=/ip4/172.22.0.100/tcp/9010/p2p/HEAD-ID \
-          --topic=allora-topic-6-worker --allora-chain-worker-mode=worker \
+          --topic=allora-topic-4-worker --allora-chain-worker-mode=worker \
           --allora-chain-restore-mnemonic='WALLETSEEDPHRASE' \
           --allora-node-rpc-address=https://allora-rpc.testnet-1.testnet.allora.network \
           --allora-chain-key-name=worker-2 \
-          --allora-chain-topic-id=6
+          --allora-chain-topic-id=4
     volumes:
       - ./workers/worker-2:/data
     working_dir: /data
@@ -399,7 +399,7 @@ wget -O checkyourworker.sh https://raw.githubusercontent.com/casual1st/allorawor
 chmod +x checkyourworker.sh
 ./checkyourworker.sh
 ```
-Для проверки первого вворкера вводи allora-topic-5-worker, а для второго - allora-topic-6-worker
+Для проверки первого вворкера вводи allora-topic-3-worker, а для второго - allora-topic-4-worker
 
 #### Run Checker
 ```bash
